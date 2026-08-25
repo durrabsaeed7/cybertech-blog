@@ -379,6 +379,70 @@
     transition:box-shadow .3s ease, transform .3s ease;
   }
   .widget:hover{ box-shadow:var(--shadow-md); transform:translateY(-3px); }
+
+  /* ---- Search widget ---- */
+  .search-widget{ padding:18px; }
+  .search-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:6px 6px 6px 16px;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .search-box:focus-within{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(47,111,98,.12);
+    background:var(--bg-alt);
+  }
+  .search-box input{
+    flex:1;
+    border:none;
+    background:transparent;
+    outline:none;
+    font-family:var(--font-body);
+    font-size:.88rem;
+    color:var(--ink);
+    padding:8px 0;
+  }
+  .search-box input::placeholder{ color:var(--ink-soft); opacity:.75; }
+  .search-box button{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px; height:34px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color:#fff;
+    cursor:pointer;
+    font-size:.95rem;
+    box-shadow:0 4px 12px rgba(47,111,98,.25);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .search-box button:hover{ box-shadow:var(--shadow-accent); transform:translateY(-1px) scale(1.04); }
+  .search-box button:active{ transform:translateY(0) scale(1); }
+  .search-status{
+    font-size:.78rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    display:none;
+  }
+  .search-status.active{ display:block; }
+  .no-results{
+    display:none;
+    text-align:center;
+    padding:36px 20px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    color:var(--ink-soft);
+    font-size:.94rem;
+  }
+  .no-results.active{ display:block; }
   .widget h4{
     font-family:var(--font-display);
     font-size:1.05rem;
@@ -714,10 +778,23 @@
       </div>
     </article>
 
+    <div class="no-results" id="noResults">No articles found matching your search. Try a different keyword.</div>
+
   </main>
 
   <!-- ---------- SIDEBAR ---------- -->
   <aside>
+    <!-- ===================== SEARCH WIDGET ===================== -->
+    <div class="widget search-widget">
+      <form id="searchForm" role="search" onsubmit="return false;">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search articles… e.g. Kali, Phishing" autocomplete="off" aria-label="Search articles">
+          <button type="submit" id="searchBtn" aria-label="Search">🔍</button>
+        </div>
+      </form>
+      <p class="search-status" id="searchStatus"></p>
+    </div>
+
     <!-- ===================== AD SLOT: SIDEBAR (e.g. 300x250) ===================== -->
     <div class="ad-slot ad-sidebar">
       <!-- Paste sidebar AdSense unit code here -->
@@ -842,6 +919,43 @@
     var isOpen = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', isOpen);
   });
+
+  // Real-time article search — filters cards by title, category, and excerpt text
+  (function(){
+    var searchInput = document.getElementById('searchInput');
+    var searchForm   = document.getElementById('searchForm');
+    var searchStatus = document.getElementById('searchStatus');
+    var noResults    = document.getElementById('noResults');
+    var articles     = Array.prototype.slice.call(document.querySelectorAll('main .article-card'));
+
+    function runSearch(){
+      var query = searchInput.value.trim().toLowerCase();
+      var visibleCount = 0;
+
+      articles.forEach(function(card){
+        var text = card.textContent.toLowerCase();
+        var matches = query === '' || text.indexOf(query) !== -1;
+        card.style.display = matches ? '' : 'none';
+        if (matches) visibleCount++;
+      });
+
+      if (query === ''){
+        searchStatus.classList.remove('active');
+        searchStatus.textContent = '';
+      } else {
+        searchStatus.classList.add('active');
+        searchStatus.textContent = visibleCount + (visibleCount === 1 ? ' article found' : ' articles found') + ' for "' + searchInput.value.trim() + '"';
+      }
+
+      noResults.classList.toggle('active', visibleCount === 0);
+    }
+
+    searchInput.addEventListener('input', runSearch);   // real-time as the user types
+    searchForm.addEventListener('submit', function(e){  // Enter key / search button
+      e.preventDefault();
+      runSearch();
+    });
+  })();
 </script>
 
 </body>
