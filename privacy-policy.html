@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Your Blog Name</title>
+<meta name="description" content="Privacy Policy for Your Blog Name — how we collect, use, and protect data, including information about cookies and third-party advertising.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.yourdomain.com/privacy-policy.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:            #f6f5f1;
+    --bg-alt:        #ffffff;
+    --ink:           #172033;
+    --ink-soft:      #4a5568;
+    --line:          #e2e0d8;
+    --accent:        #2f6f62;
+    --accent-dark:   #234f46;
+    --accent-gold:   #b9924a;
+    --radius:        10px;
+    --max-width:     1180px;
+    --font-display:  'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--font-body);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ color:var(--accent-dark); text-decoration:underline; }
+  ul{ list-style:none; }
+  .wrap{ max-width:var(--max-width); margin:0 auto; padding:0 20px; }
+
+  /* ===================== HEADER (matches site) ===================== */
+  header.site-header{
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.5rem;
+    letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  .logo span{ color:var(--accent); }
+
+  nav.main-nav ul{ display:flex; gap:32px; }
+  nav.main-nav a{
+    font-weight:600;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    transition:color .2s ease;
+  }
+  nav.main-nav a:hover{ color:var(--accent); text-decoration:none; }
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    width:42px; height:42px;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+  }
+  .menu-toggle span{ width:20px; height:2px; background:var(--ink); display:block; }
+
+  /* ===================== PAGE HEADER ===================== */
+  .page-hero{
+    padding:48px 0 32px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(47,111,98,.08);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:14px;
+  }
+  .page-hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .page-hero .updated{
+    font-size:.88rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===================== LEGAL CONTENT ===================== */
+  .legal-wrap{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    padding:44px 0 70px;
+    align-items:start;
+  }
+
+  .toc{
+    position:sticky;
+    top:90px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .toc h4{
+    font-family:var(--font-display);
+    font-size:.95rem;
+    margin-bottom:12px;
+  }
+  .toc li{ margin-bottom:9px; }
+  .toc a{
+    font-size:.84rem;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .toc a:hover{ color:var(--accent); text-decoration:none; }
+
+  .legal-content section{ margin-bottom:34px; }
+  .legal-content h2{
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:12px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--ink);
+  }
+  .legal-content h3{
+    font-size:1rem;
+    font-weight:700;
+    margin:16px 0 8px;
+  }
+  .legal-content p{ color:var(--ink-soft); margin-bottom:12px; font-size:.96rem; }
+  .legal-content ul{ margin:0 0 12px 0; }
+  .legal-content ul li{
+    color:var(--ink-soft);
+    font-size:.96rem;
+    padding-left:18px;
+    position:relative;
+    margin-bottom:8px;
+  }
+  .legal-content ul li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--accent);
+  }
+  .legal-content strong{ color:var(--ink); }
+  .callout{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    padding:16px 18px;
+    margin:14px 0;
+  }
+  .callout p{ margin-bottom:0; font-size:.9rem; }
+
+  /* ===================== FOOTER (matches site) ===================== */
+  footer.site-footer{
+    background:var(--ink);
+    color:#cfd4de;
+    padding:40px 0 24px;
+    margin-top:20px;
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:.8rem;
+    color:#8891a1;
+  }
+  .footer-bottom a{ color:#8891a1; }
+  .footer-bottom a:hover{ color:#fff; text-decoration:none; }
+
+  @media (max-width: 900px){
+    .legal-wrap{ grid-template-columns:1fr; }
+    .toc{ position:static; }
+  }
+  @media (max-width: 720px){
+    nav.main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--bg-alt);
+      border-bottom:1px solid var(--line);
+      display:none;
+      padding:10px 20px 20px;
+    }
+    nav.main-nav.open{ display:block; }
+    nav.main-nav ul{ flex-direction:column; gap:16px; }
+    .menu-toggle{ display:flex; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Your<span>Blog</span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: August 25, 2026</p>
+  </div>
+</section>
+
+<!-- ===================== LEGAL CONTENT ===================== -->
+<div class="wrap legal-wrap">
+
+  <aside class="toc">
+    <h4>On This Page</h4>
+    <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#info-we-collect">Information We Collect</a></li>
+      <li><a href="#log-files">Log Files</a></li>
+      <li><a href="#cookies">Cookies and Web Beacons</a></li>
+      <li><a href="#adsense">Google AdSense &amp; DoubleClick DART Cookie</a></li>
+      <li><a href="#third-party">Third-Party Advertising Partners</a></li>
+      <li><a href="#opt-out">Your Choices &amp; Cookie Control</a></li>
+      <li><a href="#children">Children's Information</a></li>
+      <li><a href="#consent">Consent</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </aside>
+
+  <div class="legal-content">
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>At Your Blog Name, accessible from <strong>https://www.yourdomain.com</strong>, one of our main priorities is the privacy of our visitors. This Privacy Policy document explains what types of information are collected and recorded by Your Blog Name and how we use it.</p>
+      <p>If you have additional questions or require more information about this policy, feel free to <a href="contact.html">contact us</a>.</p>
+      <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regard to the information they shared and/or collect on Your Blog Name. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+    </section>
+
+    <section id="info-we-collect">
+      <h2>Information We Collect</h2>
+      <p>When you visit our website, we may collect certain information automatically, such as your browser type, device type, operating system, referring page, and pages visited. If you subscribe to our newsletter or contact us through a form, we collect the personal information you voluntarily provide, such as your name and email address.</p>
+      <p>We do not knowingly collect sensitive personal information such as financial details, government ID numbers, or health information.</p>
+    </section>
+
+    <section id="log-files">
+      <h2>Log Files</h2>
+      <p>Your Blog Name follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this as part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.</p>
+      <p>These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</p>
+    </section>
+
+    <section id="cookies">
+      <h2>Cookies and Web Beacons</h2>
+      <p>Like most websites, Your Blog Name uses "cookies" — small files stored on your device — to store information including visitors' preferences and the pages on the website that the visitor accessed or visited. This information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+    </section>
+
+    <section id="adsense">
+      <h2>Google AdSense &amp; the DoubleClick DART Cookie</h2>
+      <p>Google is one of the third-party vendors on our site. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet. Google may use data collected while serving ads on our site to help provide, maintain, and improve the Google advertising network.</p>
+      <p>Users may opt out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy at the link below.</p>
+      <div class="callout">
+        <p>Google's advertising requirements can be summed up by Google's Advertising Principles: <a href="https://support.google.com/adspolicy/answer/6008942" target="_blank" rel="noopener">https://support.google.com/adspolicy/answer/6008942</a></p>
+      </div>
+    </section>
+
+    <section id="third-party">
+      <h2>Third-Party Advertising Partners</h2>
+      <p>Some advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked their Privacy Policies below:</p>
+      <ul>
+        <li>Google — <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a></li>
+      </ul>
+      <p>Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons in their respective advertisements and links that appear on Your Blog Name, which are sent directly to users' browsers. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see.</p>
+      <p>Note that Your Blog Name has no access to or control over these cookies used by third-party advertisers.</p>
+    </section>
+
+    <section id="opt-out">
+      <h2>Your Choices &amp; Cookie Control</h2>
+      <p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found on the browsers' respective websites.</p>
+      <p>If you would like more information about this practice and to know your choices about not having this information used by these companies, you may also visit:</p>
+      <ul>
+        <li>Google Ads Settings — <a href="https://adssettings.google.com" target="_blank" rel="noopener">https://adssettings.google.com</a></li>
+        <li>Digital Advertising Alliance — <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener">https://www.aboutads.info/choices</a></li>
+      </ul>
+    </section>
+
+    <section id="children">
+      <h2>Children's Information</h2>
+      <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+      <p>Your Blog Name does not knowingly collect any personally identifiable information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to <a href="contact.html">contact us</a> immediately and we will do our best efforts to promptly remove such information from our records.</p>
+    </section>
+
+    <section id="consent">
+      <h2>Consent</h2>
+      <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+    </section>
+
+    <section id="changes">
+      <h2>Changes to This Policy</h2>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please <a href="contact.html">contact us</a>.</p>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>© 2026 Your Blog Name. All rights reserved.</span>
+    <span><a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="contact.html">Contact Us</a></span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('mainNav');
+  toggle.addEventListener('click', function(){
+    var isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Your Blog Name</title>
+<meta name="description" content="Get in touch with Your Blog Name — questions, feedback, corrections, or collaboration requests.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.yourdomain.com/contact.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:            #f6f5f1;
+    --bg-alt:        #ffffff;
+    --ink:           #172033;
+    --ink-soft:      #4a5568;
+    --line:          #e2e0d8;
+    --accent:        #2f6f62;
+    --accent-dark:   #234f46;
+    --accent-gold:   #b9924a;
+    --radius:        10px;
+    --max-width:     1180px;
+    --font-display:  'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--font-body);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ color:var(--accent-dark); text-decoration:underline; }
+  ul{ list-style:none; }
+  .wrap{ max-width:var(--max-width); margin:0 auto; padding:0 20px; }
+
+  /* ===================== HEADER (matches site) ===================== */
+  header.site-header{
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.5rem;
+    letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  .logo span{ color:var(--accent); }
+
+  nav.main-nav ul{ display:flex; gap:32px; }
+  nav.main-nav a{
+    font-weight:600;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    transition:color .2s ease;
+  }
+  nav.main-nav a:hover{ color:var(--accent); text-decoration:none; }
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    width:42px; height:42px;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+  }
+  .menu-toggle span{ width:20px; height:2px; background:var(--ink); display:block; }
+
+  /* ===================== PAGE HERO ===================== */
+  .page-hero{
+    padding:48px 0 32px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(47,111,98,.08);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:14px;
+  }
+  .page-hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .page-hero p{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    max-width:56ch;
+  }
+
+  /* ===================== CONTACT LAYOUT ===================== */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:40px;
+    padding:48px 0 70px;
+    align-items:start;
+  }
+
+  /* ---- Info panel ---- */
+  .contact-info{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px;
+  }
+  .contact-info h3{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .contact-info p{
+    color:var(--ink-soft);
+    font-size:.9rem;
+    margin-bottom:22px;
+  }
+  .contact-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-bottom:20px;
+  }
+  .contact-item:last-child{ margin-bottom:0; }
+  .contact-icon{
+    flex-shrink:0;
+    width:38px; height:38px;
+    border-radius:8px;
+    background:rgba(47,111,98,.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--accent);
+    font-size:1.05rem;
+  }
+  .contact-item h5{ font-size:.86rem; font-weight:700; margin-bottom:2px; }
+  .contact-item span, .contact-item a{ font-size:.85rem; color:var(--ink-soft); }
+  .contact-item a:hover{ color:var(--accent); }
+
+  .response-note{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---- Form panel ---- */
+  .contact-form-card{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px;
+  }
+  .contact-form-card h3{
+    font-family:var(--font-display);
+    font-size:1.25rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .contact-form-card > p{
+    color:var(--ink-soft);
+    font-size:.9rem;
+    margin-bottom:24px;
+  }
+
+  .form-row{ margin-bottom:18px; }
+  .form-row label{
+    display:block;
+    font-size:.85rem;
+    font-weight:700;
+    margin-bottom:7px;
+    color:var(--ink);
+  }
+  .form-row input,
+  .form-row textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-family:var(--font-body);
+    font-size:.92rem;
+    color:var(--ink);
+    background:var(--bg);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .form-row input:focus,
+  .form-row textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(47,111,98,.12);
+    background:var(--bg-alt);
+  }
+  .form-row textarea{ resize:vertical; min-height:140px; }
+
+  .form-two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+
+  .submit-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:.92rem;
+    cursor:pointer;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .submit-btn:hover{ background:var(--accent-dark); transform:translateY(-1px); }
+  .submit-btn:active{ transform:translateY(0); }
+
+  .form-note{
+    margin-top:14px;
+    font-size:.78rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===================== FOOTER (matches site) ===================== */
+  footer.site-footer{
+    background:var(--ink);
+    color:#cfd4de;
+    padding:40px 0 24px;
+    margin-top:20px;
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:.8rem;
+    color:#8891a1;
+  }
+  .footer-bottom a{ color:#8891a1; }
+  .footer-bottom a:hover{ color:#fff; text-decoration:none; }
+
+  @media (max-width: 900px){
+    .contact-wrap{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 560px){
+    .form-two-col{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 720px){
+    nav.main-nav{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--bg-alt);
+      border-bottom:1px solid var(--line);
+      display:none;
+      padding:10px 20px 20px;
+    }
+    nav.main-nav.open{ display:block; }
+    nav.main-nav ul{ flex-direction:column; gap:16px; }
+    .menu-toggle{ display:flex; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Your<span>Blog</span></a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Contact Us</h1>
+    <p>Questions, feedback, corrections, or just want to say hello — send us a message and we'll get back to you.</p>
+  </div>
+</section>
+
+<!-- ===================== CONTACT LAYOUT ===================== -->
+<div class="wrap contact-wrap">
+
+  <!-- ---------- INFO PANEL ---------- -->
+  <div class="contact-info">
+    <h3>Reach Us Directly</h3>
+    <p>Prefer email? You can also reach out directly using the details below.</p>
+
+    <div class="contact-item">
+      <div class="contact-icon">@</div>
+      <div>
+        <h5>Email</h5>
+        <a href="mailto:durrabsaeed19@gmail.com">durrabsaeed19@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-icon">◷</div>
+      <div>
+        <h5>Response Time</h5>
+        <span>Usually within 2–3 business days</span>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-icon">✎</div>
+      <div>
+        <h5>Topics We Cover</h5>
+        <span>Cybersecurity, Linux, online safety guides</span>
+      </div>
+    </div>
+
+    <div class="response-note">
+      For copyright or removal requests, please mention the article URL in your message so we can locate it quickly.
+    </div>
+  </div>
+
+  <!-- ---------- CONTACT FORM ---------- -->
+  <div class="contact-form-card">
+    <h3>Send a Message</h3>
+    <p>Fill in the form below and we'll respond as soon as we can.</p>
+
+    <form id="contactForm" action="#" method="post">
+      <div class="form-two-col">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="What is this about?">
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message →</button>
+      <p class="form-note">We respect your privacy — your details are only used to respond to your message. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </form>
+  </div>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap footer-bottom">
+    <span>© 2026 Your Blog Name. All rights reserved.</span>
+    <span><a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="privacy-policy.html">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('mainNav');
+  toggle.addEventListener('click', function(){
+    var isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+
+</body>
+</html>
